@@ -25,10 +25,15 @@ public class UserController {
     @Resource
     private WxMaProperties wxMaProperties;
 
-    @GetMapping("/getCode")
+    @GetMapping("/login")
     public void getCode(@RequestParam("code") String code) {
         List<WxMaProperties.Config> configs = wxMaProperties.getConfigs();
         String s = userService.wxLogin(configs.get(0).getAppid(), code);
         System.out.println(s);
+    }
+
+    @GetMapping("getUserInfo")
+    public void getUserInfo(@RequestParam("userInfo") String userInfo) {
+        System.out.println(userInfo);
     }
 }
